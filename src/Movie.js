@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import "./App.css";
+import "./Movie.css";
 
 class Movie extends Component {
   static propTypes = {
@@ -10,32 +10,50 @@ class Movie extends Component {
     hello: "world"
   };
   componentWillMount() {
-    console.log("will mount");
+    // console.log("will mount");
   }
   componentDidMount() {
-    console.log("after render");
+    // console.log("after render");
   }
   render() {
-    console.log("render");
+    // console.log("render");
     return (
       <div>
-        {/* <MoviePoster poster={this.props.data.poster} /> */}
         <MoviePosterFunction poster={this.props.data.poster} />
-        <h1> {this.props.data.title} </h1>
+        <TitleFunction title={this.props.data.title} />
+        <RatingFunction rating={this.props.data.rating} />
+        <GenresFunction genres={this.props.data.genres} />
+        <SynopsisFunction synopsis={this.props.data.synopsis} />
       </div>
     );
   }
 }
-class MoviePoster extends Component {
-  render() {
-    return <img src={this.props.poster} />;
-  }
+function SynopsisFunction({ synopsis }) {
+  return <p>{synopsis}</p>;
 }
 
-function MoviePosterFunction({ poster }) {
-  return <img src={poster} />;
+function GenresFunction({ genres }) {
+  return (
+    <span className="Movie__Genre">
+      {" "}
+      {genres.map(data => {
+        return data + " ";
+      })}{" "}
+    </span>
+  );
 }
+function TitleFunction({ title }) {
+  return <h1>{title}</h1>;
+}
+function RatingFunction({ rating }) {
+  return <h3>{rating}</h3>;
+}
+function MoviePosterFunction({ poster }) {
+  return <img className="Movie__Poster" src={poster} />;
+}
+
 MoviePosterFunction.propTypes = {
   poster: PropTypes.string.isRequired
 };
+
 export default Movie;

@@ -5,6 +5,9 @@ import movieData from "./movieData";
 /**
  * jsonData.data.movies.medium_cover_image
  * jsonData.data.movies.title_long
+ * @param {Number} jsonData.data.movies.rating
+ * @param {Array} jsonData.data.movies.genres
+ * @param {String}  jsonData.data.movies.synopsis
  */
 class App extends Component {
   state = {};
@@ -17,7 +20,10 @@ class App extends Component {
       movies: await jsonData.data.movies.map(movie => {
         return {
           poster: movie.medium_cover_image,
-          title: movie.title_long
+          title: movie.title_long,
+          rating: movie.rating,
+          genres: movie.genres,
+          synopsis: movie.synopsis
         };
       })
     });
