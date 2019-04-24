@@ -18,12 +18,16 @@ class Movie extends Component {
   render() {
     // console.log("render");
     return (
-      <div>
-        <MoviePosterFunction poster={this.props.data.poster} />
-        <TitleFunction title={this.props.data.title} />
-        <RatingFunction rating={this.props.data.rating} />
-        <GenresFunction genres={this.props.data.genres} />
-        <SynopsisFunction synopsis={this.props.data.synopsis} />
+      <div className="Movie">
+        <div>
+          <MoviePosterFunction poster={this.props.data.poster} />
+        </div>
+        <div>
+          <TitleFunction title={this.props.data.title} />
+          <RatingFunction rating={this.props.data.rating} />
+          <GenresFunction genres={this.props.data.genres} />
+          <SynopsisFunction synopsis={this.props.data.synopsis} />
+        </div>
       </div>
     );
   }
